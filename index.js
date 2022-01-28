@@ -5,7 +5,12 @@ import { exec } from 'child_process';
 import fetch from 'node-fetch';
 
 const name = process.argv[2];
-const AUTH = process.env.AUTH;
+const AUTH = process.env.CGR_AUTH;
+
+if (!AUTH) {
+    console.log('Environment variable CGR_AUTH missing.');
+    process.exit(1);
+}
 
 const headers = {
     'Authorization': `Basic ${Buffer.from(AUTH, 'utf8').toString('base64')}`
