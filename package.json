@@ -1,7 +1,7 @@
 {
-  "name": "create-github-repo",
-  "version": "1.0.0",
-  "description": "",
+  "name": "cgr-cli",
+  "version": "1.0.1",
+  "description": "CLI tool for creating Github repos easily from the comfort of your terminal.",
   "main": "index.js",
   "type": "module",
   "bin": "index.js",
@@ -13,7 +13,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "fymmit",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^14.3.2",
