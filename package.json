@@ -1,0 +1,22 @@
+{
+  "name": "create-github-repo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "bin": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fymmit/create-github-repo"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^14.3.2",
+    "node-fetch": "^3.2.0"
+  }
+}
