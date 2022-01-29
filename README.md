@@ -1,4 +1,6 @@
-# cgr-cli
+# Create Github Repository CLI
+
+
 
 ## Setup
 
