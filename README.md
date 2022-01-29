@@ -1,6 +1,6 @@
 # Create Github Repository CLI
 
-
+Creates repositories both locally and in Github and links them together with one simple command.
 
 ## Setup
 
