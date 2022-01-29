@@ -9,7 +9,13 @@ const name = process.argv[2];
 const AUTH = process.env.CGR_AUTH;
 
 if (!AUTH) {
-    console.log('Environment variable CGR_AUTH missing.');
+    console.log('Environment variable CGR_AUTH missing');
+    process.exit(1);
+}
+
+if (!name) {
+    console.log('Name argument missing');
+    console.log('Usage: cgr-cli <repository-name>');
     process.exit(1);
 }
 
