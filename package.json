@@ -1,6 +1,6 @@
 {
   "name": "cgr-cli",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "CLI tool for creating Github repos easily from the comfort of your terminal.",
   "main": "index.js",
   "type": "module",
