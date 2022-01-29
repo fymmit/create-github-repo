@@ -4,6 +4,7 @@ import 'dotenv/config';
 import { exec } from 'child_process';
 import { promisify } from 'util';
 import fetch from 'node-fetch';
+import { validateName } from './utils/validation.js';
 
 const name = process.argv[2];
 const AUTH = process.env.CGR_AUTH;
@@ -17,6 +18,8 @@ if (!name) {
     console.log('Name argument missing');
     console.log('Usage: cgr-cli <repository-name>');
     process.exit(1);
+} else if (!validateName(name)) {
+    console.log('Invalid name.');
 }
 
 const sleep = (ms = 2000) => new Promise((r) => setTimeout(r, ms));
@@ -51,14 +54,14 @@ const cloneRepo = async (url) => {
 }
 
 try {
-    const url = await createGithubRepo();
-    await sleep();
-    await cloneRepo(url);
-    console.log(`
-        All done.
-        Github repository: ${url}
-        Local repository folder: ${'./'}${name}
-    `);
+    // const url = await createGithubRepo();
+    // await sleep();
+    // await cloneRepo(url);
+    // console.log(`
+    //     All done.
+    //     Github repository: ${url}
+    //     Local repository folder: ${'./'}${name}
+    // `);
 } catch (e) {
     console.log(e);
     process.exit(1);
