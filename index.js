@@ -21,24 +21,12 @@ const headers = {
 
 const run = promisify(exec);
 
-const mkdir = async () => {
-    console.log(`Creating a new folder ${name}`);
-    await run(`mkdir ${name}`);
-}
-
-const initRepo = async () => {
-    console.log(`Initializing git repository ${name}.git`);
-    await run(`git init ${name}`);
-    await run(`echo # ${name}>> ${name}/README.md`);
-    await run(`cd ${name} && git add README.md`);
-    await run(`cd ${name} && git commit -m "Initial commit"`);
-}
-
 const createGithubRepo = async () => {
     console.log('Creating a Github repository');
     const body = JSON.stringify({
         name,
-        private: true
+        private: true,
+        auto_init:  true
     });
 
     const res = await fetch('https://api.github.com/user/repos', {
@@ -51,26 +39,15 @@ const createGithubRepo = async () => {
     return url;
 }
 
-const pushLocalRepoToGithub = async (url) => {
-    console.log('Pushing local repository to remote');
-    await run(`cd ${name} && git remote add origin ${url}.git`);
-    await run(`cd ${name} && git push -u origin master`);
-}
-
-const getGithubUser = async () => {
-    console.log('Authenticating user');
-    const res = await fetch('https://api.github.com/user', { headers });
-    const user = await res.json();
-    console.log(`Authenticated as ${user.login}`);
+const cloneRepo = async (url) => {
+    console.log(`Cloning ${url}`);
+    await run(`git clone ${url}`);
 }
 
 try {
-    await getGithubUser();
-    await mkdir();
-    await initRepo();
     const url = await createGithubRepo();
     await sleep();
-    await pushLocalRepoToGithub(url);
+    await cloneRepo(url);
     console.log(`
         All done.
         Github repository: ${url}
