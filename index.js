@@ -20,6 +20,7 @@ if (!name) {
     process.exit(1);
 } else if (!validateName(name)) {
     console.log('Invalid name.');
+    process.exit(1);
 }
 
 const sleep = (ms = 2000) => new Promise((r) => setTimeout(r, ms));
@@ -54,14 +55,14 @@ const cloneRepo = async (url) => {
 }
 
 try {
-    // const url = await createGithubRepo();
-    // await sleep();
-    // await cloneRepo(url);
-    // console.log(`
-    //     All done.
-    //     Github repository: ${url}
-    //     Local repository folder: ${'./'}${name}
-    // `);
+    const url = await createGithubRepo();
+    await sleep();
+    await cloneRepo(url);
+    console.log(`
+        All done.
+        Github repository: ${url}
+        Local repository folder: ${'./'}${name}
+    `);
 } catch (e) {
     console.log(e);
     process.exit(1);
